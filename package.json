@@ -1,27 +1,32 @@
 {
   "name": "nago-capoeira",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.5.4"
+    "@formspree/react": "^3.0.0",
+    "@tailwindcss/postcss": "^4.1.14",
+    "framer-motion": "^12.23.22",
+    "gltf-loader": "^1.0.0",
+    "lucide-react": "^0.546.0",
+    "next": "15.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^5.5.0",
+    "react-scroll": "^1.9.3",
+    "three": "^0.154.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.4",
-    "@eslint/eslintrc": "^3"
+    "@types/node": "24.7.0",
+    "@types/react": "19.2.2",
+    "@types/react-scroll": "^1.8.10",
+    "@types/three": "^0.180.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.10",
+    "typescript": "5.9.3"
   }
 }
