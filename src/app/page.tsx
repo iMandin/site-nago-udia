@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,7 +13,6 @@ import ConhecaOsMovimentos from "./components/ConhecaOsMovimentos";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 import Wpp from "../../public/images/whatsapp1.png";
-import { useEffect, useState } from "react";
 
 export default function Page() {
   const [isShaking, setIsShaking] = useState(false);
@@ -25,13 +25,19 @@ export default function Page() {
         setIsShaking(true);
         setTimeout(() => {
           setIsShaking(false);
-          startRandomShake(); 
-        }, 400); 
+          startRandomShake();
+        }, 400);
       }, nextShake);
     };
 
     startRandomShake();
+
+    // Forçar scroll top várias vezes
+    const interval = setInterval(() => window.scrollTo(0, 0), 5);
+    setTimeout(() => clearInterval(interval), 100); // parar após 100ms
   }, []);
+
+
 
   return (
     <main className="text-white overflow-x-hidden">
@@ -48,7 +54,6 @@ export default function Page() {
           className="w-16 h-16 object-contain"
         />
       </a>
-
 
       <Navbar />
       <Hero />

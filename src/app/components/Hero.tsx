@@ -75,7 +75,7 @@ export default function Hero() {
         </motion.h1>
 
         <p className="text-lg md:text-xl max-w-xl mx-auto">
-          Grupo Nagô Capoeira Uberlândia — preservando a arte e a alma da capoeira.
+          Capoeira Nagô Uberlândia — preservando a arte e a alma da capoeira.
         </p>
       </motion.div>
     </section>
