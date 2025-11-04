@@ -1,13 +1,7 @@
 import * as THREE from 'three'
-
 import { loadFbxAnimations, sample, setButton } from './utils.js'
 import IdleState from './states/IdleState.js'
 import SpecialState from './states/SpecialState.js'
-
-const title = document.getElementById('title')
-const randomMoves = document.getElementById('random-moves')
-const buttons = document.querySelectorAll('.idle,.special')
-const moves = [...document.querySelectorAll('.special')].map(btn => btn.innerText)
 
 export default class Player {
   #loading = false
@@ -19,16 +13,26 @@ export default class Player {
     this.lastAnimTime = Date.now()
     this.interval = 6 // seconds
 
-    buttons.forEach(btn => btn.addEventListener('click', e => {
-      if (this.isReady) this.setState(e.currentTarget.innerText)
-    }))
+    // DOM references só se document existir (cliente)
+    if (typeof document !== 'undefined') {
+      this.title = document.getElementById('title')
+      this.randomMoves = document.getElementById('random-moves')
+      this.buttons = document.querySelectorAll('.idle,.special')
+      this.moves = [...document.querySelectorAll('.special')].map(btn => btn.innerText)
+
+      this.buttons.forEach(btn => btn.addEventListener('click', e => {
+        if (this.isReady) this.setState(e.currentTarget.innerText)
+      }))
+    }
   }
 
   /* GETTERS & SETTERS */
 
   set loading(isLoading) {
     this.#loading = isLoading
-    buttons.forEach(btn => setButton(btn, isLoading))
+    if (this.buttons) {
+      this.buttons.forEach(btn => setButton(btn, isLoading))
+    }
   }
 
   get loading() {
@@ -44,7 +48,7 @@ export default class Player {
   }
 
   get hasPrevMove() {
-    return moves.includes(this.oldState?.name)
+    return this.moves?.includes(this.oldState?.name)
   }
 
   get timeSinceLastMove() {
@@ -52,7 +56,7 @@ export default class Player {
   }
 
   get shouldReplay() {
-    return !randomMoves.checked && this.hasPrevMove
+    return this.randomMoves && !this.randomMoves.checked && this.hasPrevMove
   }
 
   /* FSM */
@@ -70,7 +74,7 @@ export default class Player {
       if (this.oldState.name == name) return
       this.oldState.exit()
     }
-    const State = moves.includes(name) ? SpecialState : IdleState
+    const State = this.moves.includes(name) ? SpecialState : IdleState
     this.currentState = new State(this, name)
     this.currentState.enter(this.oldState)
   }
@@ -78,17 +82,19 @@ export default class Player {
   /* UPDATE */
 
   countdown() {
+    if (!this.title) return
     const secondsLeft = Math.ceil(this.interval - this.timeSinceLastMove)
     if (secondsLeft < 4 && secondsLeft > 0)
-      title.innerHTML = secondsLeft
+      this.title.innerHTML = secondsLeft
   }
 
   async chooseState() {
+    if (!this.randomMoves) return
     if (this.isReady && this.timeSinceLastMove > this.interval)
       if (this.shouldReplay)
         await this.setState(this.oldState.name)
-      else if (randomMoves.checked)
-        await this.setState(sample(moves))
+      else if (this.randomMoves.checked)
+        await this.setState(sample(this.moves))
   }
 
   async update(delta) {
