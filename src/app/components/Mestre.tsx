@@ -66,7 +66,7 @@ Projetos aprovados:
     nome: "Graduado Foguin",
     descricao:
       "Graduado Foguin tem contribuído para o fortalecimento da base de graduados da coordenação do Mestre Beiramar.",
-    imagem: "/images/Foguin1.jpg",
+    imagem: "/images/foguin.jpg",
   },
   {
     nome: "Graduado Gil",
