@@ -14,7 +14,7 @@ export default function ConhecaOsMovimentos() {
 
       <div className="w-[800px] h-[500px] mx-auto rounded-xl border border-gold overflow-hidden">
         <iframe
-          src="/capoeira-girl/index.html"
+          src="/capoeira-animation/index.html"
           className="w-full h-full"
           style={{ border: "none" }}
         />

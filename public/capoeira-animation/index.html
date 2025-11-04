@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Capoeira Girl</title>
+  <meta name="description" content="Aprenda os movimentos da Capoeira">
+  <meta name="viewport" content="initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 id="title">Aprenda Capoeira</h1>
+<!-- <div class="audio-player-container">
+  <audio controls id="audio-player">
+    <source src="../audios/nago_udia.mp3" type="audio/mpeg" />
+    Seu navegador não suporta o player de áudio.
+  </audio>
+</div>
+
+<style>
+  .audio-player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    background: #0a0a0a;
+    border: 1px solid #c9a227; 
+    border-radius: 12px;
+    padding: 6px 10px;
+    width: 250px;
+    box-shadow: 0 0 12px rgba(201, 162, 39, 0.2);
+  }
+
+  audio {
+    width: 220px;
+    height: 32px;
+    filter: invert(80%) sepia(60%) saturate(250%) hue-rotate(10deg)
+      brightness(100%) contrast(95%);
+    border-radius: 8px;
+    outline: none;
+  }
+
+  audio::-webkit-media-controls-panel {
+    background-color: #000;
+    border-radius: 8px;
+  }
+
+  audio::-webkit-media-controls-play-button:hover {
+    filter: brightness(1.4);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+</style> -->
+
+
+
+  <div id="toggle-menu">
+    <input type="checkbox" id="burger-checkbox" checked />
+    <!-- burger -->
+    <span></span>
+    <span></span>
+    <span></span>
+
+    <div id="nav-wrapper">
+      <nav class="tabs">
+        <div class="tab">
+          <input type="checkbox" id="warm-up">
+          <label class="tab-label" for="warm-up">Aquecimentos</label>
+          <div class="tab-content">
+            <!-- <button class="idle" title="Dança de alongamento de braço">Dança de alongamento de braço</button>
+            <button class="idle" title="Dança de alongamento de pernas">Dança de alongamento de pernas</button> -->
+            <button class="idle" title="Flexão carpada">Flexão carpada</button>
+            <button class="idle" title="Burpee">Burpee</button>
+            <button class="idle" title="Flexão de braços">Flexão de braços</button>
+            <button class="idle" title="Abdominal">Abdominal</button>
+          </div>
+        </div>
+
+        <div class="tab">
+          <input type="checkbox" id="gingas" checked autofocus>
+          <label class="tab-label" for="gingas">Movimentos básicos</label>
+          <div class="tab-content">
+            <button class="idle" title="Ginga">Ginga</button>
+            <button class="idle" title="Variação da Ginga">Variação da Ginga</button>
+            <button class="idle" title="Ginga devagar">Ginga devagar</button>
+            <button class="idle" title="Ginga com balanço">Ginga com balanço</button>
+          </div>
+        </div>
+
+        <div class="tab">
+          <input type="checkbox" id="attacks">
+          <label class="tab-label" for="attacks">Chutes</label>
+          <div class="tab-content">
+            <button class="special" title="Ponteira">Ponteira</button>
+            <button class="special" title="Chapa">Chapa</button>
+            <button class="special" title="Benção">Benção</button>
+            <button class="special" title="Chapa com passo atrás">Chapa com passo atrás</button>
+            <button class="special" title="Chapa giratória">Chapa giratória</button>
+            <button class="special" title="Chapa giratória com salto">Chapa giratória com salto</button>
+
+            <button class="special" title="Meia-lua de frente">Meia-lua de frente</button>
+            <button class="special" title="Armada ou Meia-lua de costas">Armada ou Meia-lua de costas</button>
+            <button class="special" title="Queixada">Queixada</button>
+            <button class="special" title="Queixada com passo atrás">Queixada com passo atrás</button>
+
+            <button class="special" title="Meia-lua de compasso">Meia-lua de compasso</button>
+            <button class="special" title="Meia-lua de costas">Meia-lua de costas</button>
+            <button class="special" title="Rabo de arraia">Rabo de arraia</button>
+
+            <button class="special" title="Martelo">Martelo</button>
+            <button class="special" title="Martelo com avanço">Martelo com avanço</button>
+            <button class="special" title="Martelo do chão">Martelo do chão</button>
+            <button class="special" title="Martelo do chão sem as mãos">Martelo do chão sem as mãos</button>
+            <button class="special" title="Chapéu de couro">Chapéu de couro</button>
+            <button class="special" title="Martelo pulado">Martelo pulado</button>
+          </div>
+        </div>
+
+        <div class="tab">
+          <input type="checkbox" id="defences">
+          <label class="tab-label" for="defences">Esquivas</label>
+          <div class="tab-content">
+            <button class="special" title="Cocorinha">Cocorinha</button>
+            <button class="special" title="Esquiva lateral">Esquiva lateral</button>
+            <button class="special" title="Esquiva de frente">Esquiva de frente</button>
+            <button class="special" title="Esquiva de costas">Esquiva de costas</button>
+
+            <button class="special" title="Role">Role</button>
+            <button class="special" title="Corrupio">Corrupio</button>
+            <button class="special" title="Troca de pé">Troca de pé</button>
+            <button class="special" title="Queda de rins">Queda de rins</button>
+          </div>
+        </div>
+
+        <div class="tab">
+          <input type="checkbox" id="takedowns">
+          <label class="tab-label" for="takedowns">Rasteiras</label>
+          <div class="tab-content">
+            <button class="special" title="Rasteira de frente">Rasteira de frente</button>
+            <button class="special" title="Rasteira Meia-lua de frente">Rasteira Meia-lua de frente</button>
+            <button class="special" title="Rasteira de costas">Rasteira de costas</button>
+            <button class="special" title="Rasteira Rabo de arraia">Rasteira Rabo de arraia</button>
+            <button class="special" title="Rasteira em pé">Rasteira em pé</button>
+          </div>
+        </div>
+
+        <div class="tab">
+          <input type="checkbox" id="cartwheels">
+          <label class="tab-label" for="cartwheels">Aú</label>
+          <div class="tab-content">
+            <button class="special" title="Aú normal">Aú normal</button>
+            <button class="special" title="Aú lateral">Aú lateral</button>
+            <button class="special" title="Aú trançado">Aú trançado</button>
+            <button class="special" title="Aú de coluna">Aú de coluna</button>
+            <button class="special" title="Aú batido/Beija-flor">Aú batido/Beija-flor</button>
+            <button class="special" title="Aú sem mão">Aú sem mão</button>
+          </div>
+        </div>
+
+        <div class="tab">
+          <input type="checkbox" id="acrobatics">
+          <label class="tab-label" for="acrobatics">Floreios</label>
+          <div class="tab-content">
+            <button class="special" title="Pião de cabeça">Pião de cabeça</button>
+            <button class="special" title="Mola">Mola</button>
+            <button class="special" title="Macaco">Macaco</button>
+            <button class="special" title="Macaco lateral">Macaco lateral</button>
+            <button class="special" title="Meia-lua de coluna">Meia-lua de coluna</button>
+            <button class="special" title="Mariposa">Mariposa</button>
+            <button class="special" title="Mortal">Mortal</button>
+          </div>
+        </div>
+
+        <div class="tab">
+          <input type="checkbox" id="sequences">
+          <label class="tab-label" for="sequences">Sequências</label>
+          <div class="tab-content">
+            <button class="special" title="Aú para o role">Aú para o role</button>
+            <button class="special" title="Esquiva para o Role">Esquiva para o Role</button>
+            <button class="special" title="Armada e Esquiva">Armada e Esquiva</button>
+            <button class="special" title="Meia-lua de compasso duplo">Meia-lua de compasso duplo</button>
+          </div>
+        </div>
+
+        <!-- <div class="tab">
+          <input type="checkbox" id="mma">
+          <label class="tab-label" for="mma">MMA Chutes</label>
+          <div class="tab-content">
+            <button class="special" title="MMA Chapa">Mma Chapa</button>
+            <button class="special" title="MMA Chapa giratória">Mma Chapa giratória</button>
+            <button class="special" title="MMA Martelo">Mma Martelo</button>
+            <button class="special" title="MMA Martelo devagar">Mma Martelo devagar</button>
+            <button class="special" title="MMA Martelo rodado">Mma Martelo rodado</button>
+          </div>
+        </div> -->
+
+        <label class="random-wrapper">
+          <input id="random-moves" type="checkbox">
+          Movimentação aleatória
+        </label>
+      </nav>
+    </div>
+  </div>
+
+  <img id="preloader" src="assets/loading.gif" alt="Carregando animações...">
+
+  <full-screen-btn></full-screen-btn>
+
+  <input type="range" id="speed" name="speed" min="0" max="100" value="100"
+    title="Velocidade da animação (atalho: setas)">
+
+  <button id="camera" class="transparent">
+    <img src="assets/flip-camera.png" alt="Trocar câmera" title="Trocar câmera (atalho: C)">
+  </button>
+
+  <button id="mirror" class="transparent">
+    <img src="assets/mirror.png" width="32" alt="Espelhar animação" title="Espelhar animação (atalho: M)">
+  </button>
+
+  <script async src="libs/es-module-shims.js"></script>
+  <script async src="src/FullScreen.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./libs/three.module.js"
+      }
+    }
+  </script>
+  <script src="src/main.js" type="module"></script>
+</body>
+
+</html>
