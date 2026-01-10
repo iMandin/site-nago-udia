@@ -25,18 +25,21 @@ const noticias = [
 /* =========================
    Vídeos do Conexão Nagô
 ========================= */
+const CLOUDINARY_BASE =
+  "https://res.cloudinary.com/dzddat4gm/video/upload/q_auto,f_auto,vc_auto";
+
 const videosConexao = [
-  "/videos/Evento10.mp4",
-  "/videos/Evento5.mp4",
-  "/videos/Evento3.mp4",
-  "/videos/Evento2.mp4",
-  "/videos/Evento1.mp4",
-  "/videos/Evento4.mp4",
-  "/videos/Evento6.mp4",
-  "/videos/Evento7.mp4",
-  "/videos/Evento8.mp4",
-  "/videos/Evento9.mp4",
+  `${CLOUDINARY_BASE}/v1768058712/Evento10_hrtfk6.mp4`,
+  `${CLOUDINARY_BASE}/v1768058723/Evento5_s4tt2i.mp4`,
+  `${CLOUDINARY_BASE}/v1768058747/Evento8_kuqsnd.mp4`,
+  `${CLOUDINARY_BASE}/v1768058753/Evento1_lfkknx.mp4`,
+  `${CLOUDINARY_BASE}/v1768058770/Evento7_yyebmm.mp4`,
+  `${CLOUDINARY_BASE}/v1768058766/Evento2_yhefmr.mp4`,
+  `${CLOUDINARY_BASE}/v1768058731/Evento9_wreyvs.mp4`,
+  `${CLOUDINARY_BASE}/v1768058680/Evento4_k1wwbw.mp4`,
+  `${CLOUDINARY_BASE}/v1768058666/Evento3_tdwgyr.mp4`,
 ];
+
 
 export default function Noticias() {
   const [imagemExpandida, setImagemExpandida] = useState<string | null>(null);
@@ -70,6 +73,24 @@ export default function Noticias() {
       prev === 0 ? videosConexao.length - 1 : prev - 1
     );
   };
+
+  const swipeConfidenceThreshold = 80;
+
+  const onDragEnd = (
+    _: any,
+    info: { offset: { x: number } }
+  ) => {
+    const offsetX = info.offset.x;
+
+    if (offsetX < -swipeConfidenceThreshold) {
+      // arrastou para esquerda → próximo
+      proximoVideo();
+    } else if (offsetX > swipeConfidenceThreshold) {
+      // arrastou para direita → anterior
+      videoAnterior();
+    }
+  };
+
 
   return (
     <section
@@ -129,15 +150,56 @@ export default function Noticias() {
           viewport={{ once: true }}
           className="mt-24"
         >
-          <h3 className="text-3xl font-bold text-gold mb-6">
-            🎉 O evento "Conexão Nagô" foi um sucesso 🎉
+          {/* Selo de notícia */}
+          {/* Selo de notícia */}
+          <span
+            className="
+    inline-block mb-5 px-3 py-1
+    text-xs sm:text-sm font-semibold
+    bg-gold text-black rounded-full tracking-widest
+  "
+          >
+            ÚLTIMA NOTÍCIA
+          </span>
+
+          {/* Manchete chamativa */}
+          <h4
+            className="
+    text-3xl sm:text-3xl md:text-4xl
+    font-extrabold text-gold mb-4
+    leading-tight
+  "
+          >
+            🔥 VEJA O QUE ACONTECEU NO CONEXÃO NAGÔ 🔥
+          </h4>
+
+          {/* Título principal (mantido, menor no mobile) */}
+          <h3
+            className="
+    text-xl sm:text-2xl md:text-3xl
+    font-bold text-gold mb-4
+  "
+          >
+            🎉 O evento foi um sucesso 🎉
           </h3>
 
-          <p className="text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Um encontro marcado por energia, respeito e tradição. O Conexão Nagô
-            mostrou a força da nossa capoeira através da troca, da música e da
-            união. Veja alguns momentos desse evento especial.
+          {/* Texto estilo notícia */}
+          <p
+            className="
+    text-gray-200 max-w-3xl mx-auto mb-10
+    text-base sm:text-lg
+    leading-relaxed
+  "
+          >
+            Roda cheia, energia lá em cima, graduação emocionante e muita capoeira de verdade.
+            O <strong>Conexão Nagô</strong> mostrou que tradição não se perde — se fortalece.
+            <br />
+            <span className="block mt-3 text-gold text-sm sm:text-base">
+              👀 Aperta o play e confere tudo.
+            </span>
           </p>
+
+
 
           {/* Carrossel */}
           <div
@@ -153,19 +215,30 @@ export default function Noticias() {
                 muted
                 loop
                 controls
+                preload="none"
+                playsInline
+
+                /* 👉 swipe */
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={onDragEnd}
+
                 className={`
-                  rounded-xl border border-greenCapoeira shadow-xl object-cover
-                  ${[0, 1].includes(videoAtivo)
-                    ? "mx-auto w-[240px] h-[430px]"
-                    : "w-full h-[400px]"
+      rounded-xl border border-greenCapoeira shadow-xl object-cover
+      touch-pan-y
+      ${[0, 1].includes(videoAtivo)
+                    ? "mx-auto w-[220px] h-[390px] sm:w-[240px] sm:h-[430px]"
+                    : "w-full h-[300px] sm:h-[400px]"
                   }
-                `}
+    `}
                 initial={{ opacity: 0, x: 80 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -80 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.4 }}
               />
             </AnimatePresence>
+
 
             {/* Setas */}
             <button
@@ -199,15 +272,39 @@ export default function Noticias() {
                     setPausado(true);
                     setVideoAtivo(index);
                   }}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === videoAtivo
-                      ? "bg-gold scale-125"
-                      : "bg-gray-500"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all ${index === videoAtivo
+                    ? "bg-gold scale-125"
+                    : "bg-gray-500"
+                    }`}
                 />
               ))}
             </div>
           </div>
+          <div className="mt-12">
+            <p className="text-gray-200 max-w-3xl mx-auto mb-4 text-base sm:text-lg leading-relaxed">
+              📸 Quer ver <strong>todas</strong> as fotos e vídeos completos do evento?🎥
+            </p>
+
+            <a
+              href="https://drive.google.com/drive/folders/1dpEIwtvKewD0U_s3pbAlCyHaxLpY1R5A?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+      inline-flex items-center gap-2
+      px-6 py-3
+      bg-gold text-black font-bold
+      rounded-full
+      shadow-lg
+      hover:bg-greenCapoeira hover:text-black
+      transition-all
+      text-sm sm:text-base
+    "
+            >
+              👉 Acessar drive do evento
+            </a>
+          </div>
+
+
         </motion.div>
       </div>
 
