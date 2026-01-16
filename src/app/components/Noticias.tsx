@@ -9,10 +9,10 @@ import { fadeInUp } from "@/app/utils/animations";
 ========================= */
 const noticias = [
   {
-    titulo: "Viagem Chile",
+    titulo: "Pé na Lua",
     texto:
-      "Recentemente o Mestre Beiramar realizou a viagem para o Chile onde aconteceu o evento 'Eu vim pra Vadiar' na organização do professor Nikimba sob a coordenação do Mestre Fagulha (Capoeira Nagô).",
-    img: "/images/Chile.jpg",
+      "O Mestre Beiramar é convidado especial do evento Pé na Lua sob a organização do mestre Sapo e supervisão do mestre Pequines no dia 13 de Fevereiro de 2026.",
+    img: "/images/penalua.png",
   },
   {
     titulo: "Conexão Nagô",
@@ -20,6 +20,13 @@ const noticias = [
       "O Conexão Nagô aconteceu na cidade de Uberlândia - MG, reunindo capoeiristas em um evento marcado por troca de experiências, graduação e fortalecimento da tradição da Capoeira Nagô.",
     img: "/images/conexao.jpg",
   },
+  {
+    titulo: "Viagem Chile",
+    texto:
+      "Recentemente o Mestre Beiramar realizou a viagem para o Chile onde aconteceu o evento 'Eu vim pra Vadiar' na organização do professor Nikimba sob a coordenação do Mestre Fagulha (Capoeira Nagô).",
+    img: "/images/Chile.jpg",
+  },
+  
 ];
 
 /* =========================
@@ -40,11 +47,46 @@ const videosConexao = [
   `${CLOUDINARY_BASE}/v1768058666/Evento3_tdwgyr.mp4`,
 ];
 
+/* =========================
+   Fotos do Evento
+========================= */
+const fotosEvento = [
+  "/images/evento1.jpg",
+  "/images/evento2.jpg",
+  "/images/evento3.jpg",
+  "/images/evento4.jpg",
+  "/images/evento5.jpg",
+];
+
+
 
 export default function Noticias() {
   const [imagemExpandida, setImagemExpandida] = useState<string | null>(null);
   const [videoAtivo, setVideoAtivo] = useState(0);
   const [pausado, setPausado] = useState(false);
+  const [fotoAtiva, setFotoAtiva] = useState(0);
+
+  const proximaFoto = () => {
+    setFotoAtiva((prev) => (prev + 1) % fotosEvento.length);
+  };
+
+  const fotoAnterior = () => {
+    setFotoAtiva((prev) =>
+      prev === 0 ? fotosEvento.length - 1 : prev - 1
+    );
+  };
+
+  const onFotoDragEnd = (
+    _: any,
+    info: { offset: { x: number } }
+  ) => {
+    if (info.offset.x < -80) {
+      proximaFoto();
+    } else if (info.offset.x > 80) {
+      fotoAnterior();
+    }
+  };
+
 
   /* =========================
      Autoplay do carrossel
@@ -280,6 +322,95 @@ export default function Noticias() {
               ))}
             </div>
           </div>
+          {/* =========================
+    Galeria de Fotos
+========================= */}
+          <div className="mt-20">
+            <h4 className="text-2xl sm:text-3xl font-bold text-gold mb-6">
+              📸 Momentos que marcaram o evento
+            </h4>
+
+            <p className="text-gray-300 max-w-3xl mx-auto mb-10 text-base sm:text-lg">
+              Alguns registros que mostram a energia, a união e a força da nossa capoeira.
+            </p>
+
+            <div className="relative max-w-3xl mx-auto">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={fotoAtiva}
+                  src={fotosEvento[fotoAtiva]}
+                  alt={`Foto do evento ${fotoAtiva + 1}`}
+                  className="
+          w-full h-[260px] sm:h-[400px]
+          object-cover rounded-xl
+          border border-greenCapoeira
+          shadow-xl cursor-pointer
+          touch-pan-y
+        "
+                  onClick={() => setImagemExpandida(fotosEvento[fotoAtiva])}
+
+                  /* swipe */
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={onFotoDragEnd}
+
+                  initial={{ opacity: 0, x: 80 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -80 }}
+                  transition={{ duration: 0.4 }}
+                />
+              </AnimatePresence>
+
+              {/* Setas (desktop) */}
+              <button
+                onClick={fotoAnterior}
+                className="
+        hidden sm:flex
+        absolute left-[-50px] top-1/2 -translate-y-1/2
+        bg-black/60 hover:bg-gold
+        text-white hover:text-black
+        w-10 h-10 rounded-full
+        items-center justify-center
+        transition-all shadow-lg
+      "
+                aria-label="Foto anterior"
+              >
+                ‹
+              </button>
+
+              <button
+                onClick={proximaFoto}
+                className="
+        hidden sm:flex
+        absolute right-[-50px] top-1/2 -translate-y-1/2
+        bg-black/60 hover:bg-gold
+        text-white hover:text-black
+        w-10 h-10 rounded-full
+        items-center justify-center
+        transition-all shadow-lg
+      "
+                aria-label="Próxima foto"
+              >
+                ›
+              </button>
+
+              {/* Indicadores */}
+              <div className="flex justify-center gap-3 mt-6">
+                {fotosEvento.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setFotoAtiva(index)}
+                    className={`w-3 h-3 rounded-full transition-all ${index === fotoAtiva
+                        ? "bg-gold scale-125"
+                        : "bg-gray-500"
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="mt-12">
             <p className="text-gray-200 max-w-3xl mx-auto mb-4 text-base sm:text-lg leading-relaxed">
               📸 Quer ver <strong>todas</strong> as fotos e vídeos completos do evento?🎥
