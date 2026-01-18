@@ -69,7 +69,7 @@ const professores = [
     nome: "Professor Capitão",
     imagem: "/images/capitao.jpeg",
     descricao:
-      "Professor Capitão integra o grupo, fortalecendo a capoeira em Uberlândia.",
+      "Professor Capitão integra o grupo desde 2025, fortalecendo a capoeira em Uberlândia.",
   },
 ];
 
