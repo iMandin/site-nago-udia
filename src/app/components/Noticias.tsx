@@ -4,9 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { fadeInUp } from "@/app/utils/animations";
 
-/* =========================
-   Dados das notícias
-========================= */
 const noticias = [
   {
     titulo: "Pé na Lua",
@@ -29,9 +26,6 @@ const noticias = [
   
 ];
 
-/* =========================
-   Vídeos do Conexão Nagô
-========================= */
 const CLOUDINARY_BASE =
   "https://res.cloudinary.com/dzddat4gm/video/upload/q_auto,f_auto,vc_auto";
 
@@ -47,9 +41,6 @@ const videosConexao = [
   `${CLOUDINARY_BASE}/v1768058666/Evento3_tdwgyr.mp4`,
 ];
 
-/* =========================
-   Fotos do Evento
-========================= */
 const fotosEvento = [
   "/images/evento1.jpg",
   "/images/evento2.jpg",
@@ -88,9 +79,6 @@ export default function Noticias() {
   };
 
 
-  /* =========================
-     Autoplay do carrossel
-  ========================= */
   useEffect(() => {
     if (pausado) return;
 
@@ -101,9 +89,6 @@ export default function Noticias() {
     return () => clearInterval(interval);
   }, [pausado]);
 
-  /* =========================
-     Navegação manual
-  ========================= */
   const proximoVideo = () => {
     setPausado(true);
     setVideoAtivo((prev) => (prev + 1) % videosConexao.length);
@@ -125,10 +110,8 @@ export default function Noticias() {
     const offsetX = info.offset.x;
 
     if (offsetX < -swipeConfidenceThreshold) {
-      // arrastou para esquerda → próximo
       proximoVideo();
     } else if (offsetX > swipeConfidenceThreshold) {
-      // arrastou para direita → anterior
       videoAnterior();
     }
   };
@@ -140,7 +123,6 @@ export default function Noticias() {
       className="py-24 bg-gradient-to-b from-black to-dark relative"
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
-        {/* Título */}
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
@@ -151,7 +133,6 @@ export default function Noticias() {
           Notícias
         </motion.h2>
 
-        {/* Cards de notícias */}
         <div className="grid md:grid-cols-2 gap-10">
           {noticias.map((noticia, index) => (
             <motion.div
@@ -182,9 +163,6 @@ export default function Noticias() {
           ))}
         </div>
 
-        {/* =========================
-            Conexão Nagô - Carrossel
-        ========================= */}
         <motion.div
           variants={fadeInUp}
           initial="hidden"
@@ -192,8 +170,6 @@ export default function Noticias() {
           viewport={{ once: true }}
           className="mt-24"
         >
-          {/* Selo de notícia */}
-          {/* Selo de notícia */}
           <span
             className="
     inline-block mb-5 px-3 py-1
@@ -204,7 +180,6 @@ export default function Noticias() {
             ÚLTIMA NOTÍCIA
           </span>
 
-          {/* Manchete chamativa */}
           <h4
             className="
     text-3xl sm:text-3xl md:text-4xl
@@ -215,7 +190,6 @@ export default function Noticias() {
             🔥 VEJA O QUE ACONTECEU NO CONEXÃO NAGÔ 🔥
           </h4>
 
-          {/* Título principal (mantido, menor no mobile) */}
           <h3
             className="
     text-xl sm:text-2xl md:text-3xl
@@ -225,7 +199,6 @@ export default function Noticias() {
             🎉 O evento foi um sucesso 🎉
           </h3>
 
-          {/* Texto estilo notícia */}
           <p
             className="
     text-gray-200 max-w-3xl mx-auto mb-10
@@ -241,9 +214,6 @@ export default function Noticias() {
             </span>
           </p>
 
-
-
-          {/* Carrossel */}
           <div
             className="relative max-w-3xl mx-auto"
             onMouseEnter={() => setPausado(true)}
@@ -259,8 +229,6 @@ export default function Noticias() {
                 controls
                 preload="none"
                 playsInline
-
-                /* 👉 swipe */
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.2}
@@ -281,8 +249,6 @@ export default function Noticias() {
               />
             </AnimatePresence>
 
-
-            {/* Setas */}
             <button
               onClick={videoAnterior}
               className="absolute left-[-50px] top-1/2 -translate-y-1/2
@@ -305,7 +271,6 @@ export default function Noticias() {
               ›
             </button>
 
-            {/* Indicadores */}
             <div className="flex justify-center gap-3 mt-6">
               {videosConexao.map((_, index) => (
                 <button
@@ -322,9 +287,6 @@ export default function Noticias() {
               ))}
             </div>
           </div>
-          {/* =========================
-    Galeria de Fotos
-========================= */}
           <div className="mt-20">
             <h4 className="text-2xl sm:text-3xl font-bold text-gold mb-6">
               📸 Momentos que marcaram o evento
@@ -349,7 +311,6 @@ export default function Noticias() {
         "
                   onClick={() => setImagemExpandida(fotosEvento[fotoAtiva])}
 
-                  /* swipe */
                   drag="x"
                   dragConstraints={{ left: 0, right: 0 }}
                   dragElastic={0.2}
@@ -362,7 +323,6 @@ export default function Noticias() {
                 />
               </AnimatePresence>
 
-              {/* Setas (desktop) */}
               <button
                 onClick={fotoAnterior}
                 className="
@@ -395,7 +355,6 @@ export default function Noticias() {
                 ›
               </button>
 
-              {/* Indicadores */}
               <div className="flex justify-center gap-3 mt-6">
                 {fotosEvento.map((_, index) => (
                   <button

@@ -13,6 +13,7 @@ import ConhecaOsMovimentos from "./components/ConhecaOsMovimentos";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 import Wpp from "../../public/images/whatsapp1.png";
+import Graduacao from "./components/Graduacao";
 
 export default function Page() {
   const [isShaking, setIsShaking] = useState(false);
@@ -59,6 +60,7 @@ export default function Page() {
       <Hero />
       <About />
       <Mestres />
+      <Graduacao />
       <Eventos />
       <Noticias />
       <Galeria />

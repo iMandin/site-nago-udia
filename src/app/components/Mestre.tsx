@@ -4,9 +4,6 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/app/utils/animations";
 import { useState } from "react";
 
-/* =======================
-   READ MORE
-======================= */
 type ReadMoreProps = {
   text: string;
   fullText?: string;
@@ -33,9 +30,6 @@ function ReadMore({ text, fullText }: ReadMoreProps) {
   );
 }
 
-/* =======================
-   DADOS
-======================= */
 const mestres = [
   {
     nome: "Mestre Sapo",
@@ -127,9 +121,6 @@ const alunos = [
   },
 ];
 
-/* =======================
-   CARD REUTILIZÁVEL
-======================= */
 function CardPessoa({ nome, imagem, descricao }: any) {
   return (
     <motion.div
@@ -154,9 +145,6 @@ function CardPessoa({ nome, imagem, descricao }: any) {
   );
 }
 
-/* =======================
-   COMPONENTE PRINCIPAL
-======================= */
 export default function Mestres() {
   return (
     <section
@@ -165,7 +153,6 @@ export default function Mestres() {
     >
       <div className="container mx-auto px-4 text-center">
 
-        {/* TÍTULO */}
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
@@ -176,7 +163,6 @@ export default function Mestres() {
           Mestres
         </motion.h2>
 
-        {/* MESTRE SAPO */}
         <motion.div
           variants={fadeInUp}
           initial="hidden"
@@ -202,12 +188,10 @@ export default function Mestres() {
           </div>
         </motion.div>
 
-        {/* MESTRE BEIRAMAR */}
         <div className="max-w-md mx-auto mb-24">
           <CardPessoa {...mestres[1]} />
         </div>
 
-        {/* PROFESSORES */}
         <h3 className="text-3xl font-bold mb-10 text-gold">Professores</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20 max-w-3xl mx-auto">
           {professores.map((p, i) => (
@@ -215,7 +199,6 @@ export default function Mestres() {
           ))}
         </div>
 
-        {/* GRADUADOS */}
         <h3 className="text-3xl font-bold mb-10 text-gold">Graduados</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20 max-w-3xl mx-auto">
           {graduados.map((g, i) => (
@@ -223,7 +206,6 @@ export default function Mestres() {
           ))}
         </div>
 
-        {/* ALUNOS */}
         <h3 className="text-3xl font-bold mb-10 text-gold">Alunos</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {alunos.map((a, i) => (
