@@ -67,6 +67,15 @@ const professores = [
   },
 ];
 
+const contramestres = [
+  {
+    nome: "Contramestra Felina",
+    imagem: "/images/felina.jpg",
+    descricao:
+      "Contramestra dedicada, mantém a disciplina e a força da roda.",
+  },
+];
+
 const graduados = [
   {
     nome: "Graduado Foguin",
@@ -97,7 +106,7 @@ const alunos = [
   },
   {
     nome: "Sossego",
-    imagem: "/images/sossego.jpg",
+    imagem: "/images/sossego.png",
     descricao:
       "Sempre disposto a ajudar, com calma e espírito de união.",
   },
@@ -108,16 +117,34 @@ const alunos = [
       "Traz tranquilidade e leveza para o grupo.",
   },
   {
+    nome: "Feijão",
+    imagem: "/images/feijao.png",
+    descricao:
+      "O caçula do grupo, cheio de energia e alegria.",
+  },
+  {
+    nome: "Raposa",
+    imagem: "/images/raposa.png",
+    descricao:
+      "Ágil e atenta, contribui com o treino do grupo.",
+  },
+  {
+    nome: "Molejo",
+    imagem: "/images/molejo.png",
+    descricao:
+      "Seu gingado leve e flexível eleva a energia da roda.",
+  },
+  {
+    nome: "Corujito",
+    imagem: "/images/corujito.png",
+    descricao:
+      "Agitado e vibrante, contagia o grupo com energia e foco.",
+  },
+  {
     nome: "Titanium",
     imagem: "/images/titanium.png",
     descricao:
       "Determinado e focado na evolução constante.",
-  },
-  {
-    nome: "Feijão",
-    imagem: "/images/feijao.jpg",
-    descricao:
-      "O caçula do grupo, cheio de energia e alegria.",
   },
 ];
 
@@ -190,6 +217,11 @@ export default function Mestres() {
 
         <div className="max-w-md mx-auto mb-24">
           <CardPessoa {...mestres[1]} />
+        </div>
+
+        <h3 className="text-3xl font-bold mb-10 text-gold">Contramestres</h3>
+        <div className="max-w-md mx-auto mb-24">
+          <CardPessoa {...contramestres[0]} />
         </div>
 
         <h3 className="text-3xl font-bold mb-10 text-gold">Professores</h3>
