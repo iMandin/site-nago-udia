@@ -70,7 +70,7 @@ const professores = [
 const contramestres = [
   {
     nome: "Contramestra Felina",
-    imagem: "/images/felina.jpg",
+    imagem: "/images/felina.png",
     descricao:
       "Contramestra dedicada, mantém a disciplina e a força da roda.",
   },
