@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🥋 Capoeira Nagô UDI
 
-## Getting Started
+Projeto desenvolvido para o grupo **Capoeira Nagô Uberlândia**, com foco em apresentar informações, cultura e presença digital da capoeira.
 
-First, run the development server:
+💻 Construído com **Next.js + TailwindCSS**, garantindo performance, responsividade e uma UI moderna.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tecnologias utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- ⚛️ Next.js  
+- 🎨 Tailwind CSS  
+- 📜 TypeScript  
+- 🌐 HTML5 + CSS3  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔒 Sobre o repositório
 
-To learn more about Next.js, take a look at the following resources:
+Este é um repositório **privado**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Algumas informações, integrações e regras de negócio não estão públicas pois fazem parte de um projeto real (freela/cliente).  
+O código aqui representa uma versão controlada para desenvolvimento e manutenção.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> ⚠️ Caso precise de acesso, entre em contato através do linkedin no perfil.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ▶️ Como rodar o projeto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Clone o repositório
+
+Acesse a pasta do projeto
+
+Instale as dependências:
+
+    npm install
+    # ou
+    yarn
+    # ou
+    pnpm install
+
+Inicie o servidor de desenvolvimento:
+
+    npm run dev
+    # ou
+    yarn dev
+    # ou
+    pnpm dev
+
+Abra no navegador:
+
+👉 http://localhost:3000
+
+---
+
+## 🛠️ Desenvolvimento
+
+Você pode começar editando o arquivo:
+
+    app/page.tsx
+
+O projeto possui **hot reload**, ou seja, atualiza automaticamente conforme você salva as alterações.
+
+---
+
+## 🎯 Objetivo do projeto
+
+- 📢 Divulgar o grupo de capoeira  
+- 🥋 Fortalecer a cultura da Capoeira Nagô  
+- 🌍 Melhorar a presença digital  
+- 📱 Garantir uma experiência responsiva  
+
+---
+
+## 🚀 Deploy
+
+O deploy pode ser feito facilmente utilizando:
+
+- ▲ Vercel   
+
+---
+  
