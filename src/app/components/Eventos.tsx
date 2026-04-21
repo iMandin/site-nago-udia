@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { fadeInUp } from "@/app/utils/animations";
 
 const eventos = [
+  { titulo: "Integração Nagô", data: "29 e 30 de maio - Sede Clube da Luta", descricao: "Encontro especial de capoeira com roda, workshop e troca de cordas." },
   { titulo: "Roda de abertura", data: "14 de Novembro às 20 horas - Sede Clube da Luta", descricao: "Roda de capoeira para a abertura do evento." },
   { titulo: "Batizado 2025", data: "15 de Novembro", descricao: "Workshops de capoeira e cerimônia de graduação com convidados especiais." },
 ];

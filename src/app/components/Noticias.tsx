@@ -6,6 +6,12 @@ import { fadeInUp } from "@/app/utils/animations";
 
 const noticias = [
   {
+    titulo: "Integração Nagô",
+    texto:
+      "O evento Integração Nagô acontece nos dias 29 e 30 de maio na Sede Clube da Luta, reunindo capoeiristas para workshop, troca de cordas, roda e celebração da nossa união.",
+    img: "/images/integracao_nago.png",
+  },
+  {
     titulo: "Pé na Lua",
     texto:
       "O Mestre Beiramar é convidado especial do evento Pé na Lua sob a organização do mestre Sapo e supervisão do mestre Pequines no dia 13 de Fevereiro de 2026.",
@@ -23,7 +29,6 @@ const noticias = [
       "Recentemente o Mestre Beiramar realizou a viagem para o Chile onde aconteceu o evento 'Eu vim pra Vadiar' na organização do professor Nikimba sob a coordenação do Mestre Fagulha (Capoeira Nagô).",
     img: "/images/Chile.jpg",
   },
-  
 ];
 
 const CLOUDINARY_BASE =
