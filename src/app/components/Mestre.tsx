@@ -167,7 +167,7 @@ function CardPessoa({ nome, imagem, descricao }: any) {
       <div className="p-6 text-center">
         <h3 className="text-2xl font-semibold text-gold mb-2">{nome}</h3>
         <p className="text-gray-200 text-sm leading-relaxed">{descricao}</p>
-      </div>
+      </div> 
     </motion.div>
   );
 }
