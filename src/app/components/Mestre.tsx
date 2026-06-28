@@ -67,12 +67,29 @@ const professores = [
   },
 ];
 
+const instrutores = [
+  {
+    nome: "Instrutora Pérola",
+    imagem: "/images/perola.jpg",
+    descricao:
+      "Instrutora Pérola traz inspiração e técnica para as aulas do grupo.",
+    objectPosition: "center 15%",
+  },
+];
+
 const contramestres = [
   {
     nome: "Contramestra Felina",
     imagem: "/images/felina.png",
     descricao:
       "Contramestra dedicada, mantém a disciplina e a força da roda.",
+  },
+  {
+    nome: "Contramestre Coyote",
+    imagem: "/images/coyote.jpg",
+    descricao:
+      "Contramestre Coyote ajuda a fortalecer a roda com energia e foco.",
+    objectPosition: "center 15%",
   },
 ];
 
@@ -141,6 +158,42 @@ const alunos = [
       "Agitado e vibrante, contagia o grupo com energia e foco.",
   },
   {
+    nome: "Mel",
+    imagem: "/images/mel.jpg",
+    descricao:
+      "Mel trás alegria e doçura à roda, com presença marcante.",
+  },
+  {
+    nome: "Frajola",
+    imagem: "/images/frajola.jpg",
+    descricao:
+      "Frajola traz força e personalidade para a roda.",
+  },
+  {
+    nome: "Gohan",
+    imagem: "/images/gohan.jpg",
+    descricao:
+      "Gohan é dedicado e está sempre pronto para aprender.",
+  },
+  {
+    nome: "Vareta",
+    imagem: "/images/vareta.jpg",
+    descricao:
+      "Vareta contribui com foco e agilidade nos treinos.",
+  },
+  {
+    nome: "Boneca",
+    imagem: "/images/boneca.jpg",
+    descricao:
+      "Boneca se diverte nas rodas de capoeira.",
+  },
+  {
+    nome: "Mimi",
+    imagem: "/images/mimi.jpg",
+    descricao:
+      "Mimi ilumina o grupo com persistência.",
+  },
+  {
     nome: "Titanium",
     imagem: "/images/titanium.png",
     descricao:
@@ -148,7 +201,7 @@ const alunos = [
   },
 ];
 
-function CardPessoa({ nome, imagem, descricao }: any) {
+function CardPessoa({ nome, imagem, descricao, objectPosition }: any) {
   return (
     <motion.div
       variants={fadeInUp}
@@ -161,13 +214,14 @@ function CardPessoa({ nome, imagem, descricao }: any) {
         <img
           src={imagem}
           alt={nome}
+          style={{ objectPosition: objectPosition || "center" }}
           className="object-cover h-full w-full transition-transform duration-500 hover:scale-110"
         />
       </div>
       <div className="p-6 text-center">
         <h3 className="text-2xl font-semibold text-gold mb-2">{nome}</h3>
         <p className="text-gray-200 text-sm leading-relaxed">{descricao}</p>
-      </div> 
+      </div>
     </motion.div>
   );
 }
@@ -220,14 +274,25 @@ export default function Mestres() {
         </div>
 
         <h3 className="text-3xl font-bold mb-10 text-gold">Contramestres</h3>
-        <div className="max-w-md mx-auto mb-24">
-          <CardPessoa {...contramestres[0]} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-24 max-w-3xl mx-auto">
+          {contramestres.map((c, i) => (
+            <CardPessoa key={i} {...c} />
+          ))}
         </div>
 
         <h3 className="text-3xl font-bold mb-10 text-gold">Professores</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20 max-w-3xl mx-auto">
           {professores.map((p, i) => (
             <CardPessoa key={i} {...p} />
+          ))}
+        </div>
+
+        <h3 className="text-3xl font-bold mb-10 text-gold">Instrutores</h3>
+        <div className="flex flex-wrap justify-center gap-8 mb-24">
+          {instrutores.map((i, index) => (
+            <div key={index} className="w-full max-w-sm">
+              <CardPessoa {...i} />
+            </div>
           ))}
         </div>
 

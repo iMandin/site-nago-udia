@@ -9,7 +9,6 @@ import Eventos from "./components/Eventos";
 import Noticias from "./components/Noticias";
 import Galeria from "./components/Galeria";
 import Localizacao from "./components/Localizacao";
-import ConhecaOsMovimentos from "./components/ConhecaOsMovimentos";
 import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 import Wpp from "../../public/images/whatsapp1.png";
@@ -65,7 +64,6 @@ export default function Page() {
       <Noticias />
       <Galeria />
       <Localizacao />
-      <ConhecaOsMovimentos />
       <Contato />
       <Footer />
     </main>
